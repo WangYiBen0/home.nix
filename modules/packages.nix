@@ -27,4 +27,12 @@
       writableDir = "/home/${config.home.username}/.local/share/Celeste";
     })
   ];
+
+  programs.btop = {
+    enable = true;
+
+    setting = {
+      theme_background = false;
+    };
+  };
 }

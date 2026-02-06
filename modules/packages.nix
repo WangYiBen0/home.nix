@@ -20,19 +20,23 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    (pkgs.celestegame.override {
-      withEverest = true;
-      # 必须指定一个可写目录，用于存放 Mods、Saves 和设置
-      # 注意：~ 符号在 Nix 配置中通常建议用变量或绝对路径
-      writableDir = "/home/${config.home.username}/.local/share/Celeste";
-    })
+    # (pkgs.celestegame.override {
+    #   withEverest = true;
+    #   # 必须指定一个可写目录，用于存放 Mods、Saves 和设置
+    #   # 注意：~ 符号在 Nix 配置中通常建议用变量或绝对路径
+    #   writableDir = "/home/${config.home.username}/.local/share/Celeste";
+    # })
   ];
 
   programs.btop = {
     enable = true;
 
-    setting = {
-      theme_background = false;
+    settings = {
+      # theme_background = false;
     };
   };
+
+  # programs.neovim = {
+  #   enable = true;
+  # };
 }

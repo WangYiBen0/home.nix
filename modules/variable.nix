@@ -17,6 +17,7 @@
   #  /etc/profiles/per-user/w1ngd1nga5ter/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    SAL_USE_VCLPLUGIN = "qt6";
   };
 }

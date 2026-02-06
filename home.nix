@@ -1,13 +1,7 @@
-{
-  _config,
-  _pkgs,
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 
 {
   imports = [
-    inputs.catppuccin.homeModules.catppuccin
     inputs.stylix.homeModules.stylix
     ./modules
     { nixpkgs.overlays = import ./overlays inputs; }

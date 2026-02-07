@@ -40,35 +40,30 @@
       flake-utils,
       ...
     }@inputs:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      in
-      {
-        formatter = pkgs.nixfmt-tree;
+    flake-utils.lib.eachDefaultSystem (system: {
+      formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+    })
+    // {
 
-        legacyPackages = {
-          homeConfigurations."w1ngd1nga5ter@nixos-matebook16d" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [
-              ./home.nix
-              ./hosts/nixos-matebook16d
-            ];
-            extraSpecialArgs = { inherit inputs; };
-          };
-          homeConfigurations."w1ngd1nga5ter@nixos-sxyz-9" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [
-              ./home.nix
-              ./hosts/nixos-sxyz-9
-            ];
-            extraSpecialArgs = { inherit inputs; };
-          };
+      homeConfigurations = {
+        "w1ngd1nga5ter@nixos-matebook16d" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${import ./hosts/nixos-matebook16d/arch.nix};
+          modules = [
+            ./home.nix
+            ./hosts/nixos-matebook16d
+          ];
+          extraSpecialArgs = { inherit inputs; };
         };
-      }
-    );
+
+        "w1ngd1nga5ter@nixos-sxyz-9" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${import ./hosts/nixos-sxyz-9/arch.nix};
+          modules = [
+            ./home.nix
+            ./hosts/nixos-sxyz-9
+          ];
+          extraSpecialArgs = { inherit inputs; };
+        };
+      };
+
+    };
 }

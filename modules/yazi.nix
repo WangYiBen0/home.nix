@@ -2,6 +2,7 @@
 {
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y";
     plugins = {
       git = pkgs.yaziPlugins.git;
       sudo = pkgs.yaziPlugins.sudo;

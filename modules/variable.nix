@@ -14,7 +14,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/w1ngd1nga5ter/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     EDITOR = "nvim";

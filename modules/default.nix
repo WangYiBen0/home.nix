@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./directory.nix
     ./file.nix
     ./general.nix
     ./identity.nix

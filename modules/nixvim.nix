@@ -121,7 +121,6 @@
       nixd
       nixfmt
       nodejs
-      nodePackages.neovim
       prettierd
       pyright
       python3

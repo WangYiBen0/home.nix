@@ -401,6 +401,76 @@
 
           dashboard = {
             enabled = true;
+            # 自定义布局
+            sections = [
+              {
+                section = "header";
+                content = ''
+                  ███╗   ██╗██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
+                  ████╗  ██║██║╚██╗██╔╝██║   ██║██║████╗ ████║
+                  ██╔██╗ ██║██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
+                  ██║╚██╗██║██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
+                  ██║ ╚████║██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+                  ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+                '';
+              }
+              {
+                section = "keys";
+                gap = 1;
+                padding = 2;
+              }
+              {
+                icon = " ";
+                title = "最近文件";
+                section = "recent_files";
+                indent = 2;
+                padding = 1;
+              }
+              {
+                icon = " ";
+                title = "项目";
+                section = "projects";
+                indent = 2;
+                padding = 1;
+              }
+              # { section = "startup"; }
+            ];
+
+            # 自定义快捷按键
+            preset = {
+              keys = [
+                {
+                  icon = " ";
+                  key = "f";
+                  desc = "查找文件";
+                  action = ":lua Snacks.dashboard.pick('files')";
+                }
+                {
+                  icon = " ";
+                  key = "n";
+                  desc = "新建文件";
+                  action = ":ene | startinsert";
+                }
+                {
+                  icon = " ";
+                  key = "g";
+                  desc = "全局搜索";
+                  action = ":lua Snacks.dashboard.pick('live_grep')";
+                }
+                {
+                  icon = " ";
+                  key = "c";
+                  desc = "配置";
+                  action = ":lua Snacks.dashboard.pick('files', {cwd = '~/.config/nvim'})";
+                }
+                {
+                  icon = " ";
+                  key = "q";
+                  desc = "退出";
+                  action = ":qa";
+                }
+              ];
+            };
           };
           explorer = {
             enabled = true;

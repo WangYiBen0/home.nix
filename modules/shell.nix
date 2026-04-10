@@ -25,7 +25,7 @@
   };
 
   home.shellAliases = {
-    clear = "printf '\033[2J\033[3J\033[1;1H'";
+    clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
     cat = "bat --paging never --style plain";
     man = "batman";
   };

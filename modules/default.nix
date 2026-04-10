@@ -4,7 +4,9 @@ _: {
     ./file.nix
     ./general.nix
     ./identity.nix
+    ./ime.nix
     ./kitty.conf
+    ./nix.nix
     ./nixvim.nix
     ./packages.nix
     ./shell.nix

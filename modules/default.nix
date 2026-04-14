@@ -2,6 +2,7 @@ _: {
   imports = [
     ./directory.nix
     ./file.nix
+    ./font.nix
     ./general.nix
     ./identity.nix
     ./ime.nix

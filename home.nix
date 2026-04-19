@@ -2,7 +2,6 @@
 
 {
   imports = [
-    inputs.stylix.homeModules.stylix
     ./modules
     { nixpkgs.overlays = import ./overlays inputs; }
   ];

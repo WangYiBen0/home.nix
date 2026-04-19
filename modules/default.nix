@@ -8,6 +8,7 @@ _: {
     ./ime.nix
     ./kitty.conf
     ./nix.nix
+    ./nix-index.nix
     ./nixvim.nix
     ./packages.nix
     ./shell.nix

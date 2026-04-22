@@ -9,9 +9,6 @@
     bat = {
       flavor = "macchiato";
     };
-    btop = {
-      flavor = "macchiato";
-    };
     fcitx5 = {
       enableRounded = true;
     };

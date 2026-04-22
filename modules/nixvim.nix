@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [ inputs.nixvim.homeModules.nixvim ];
 
@@ -297,50 +302,27 @@
 
       treesitter = {
         enable = true;
+        package = pkgs.vimPlugins.nvim-treesitter;
+        grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
+          bash
+          json
+          lua
+          make
+          markdown
+          nix
+          regex
+          toml
+          vim
+          vimdoc
+          xml
+          yaml
+        ];
+
         settings = {
-          ensure_installed = [
-            "bash"
-            "css"
-            "html"
-            "javascript"
-            "json"
-            "latex"
-            "lua"
-            "markdown"
-            "markdown_inline"
-            "python"
-            "query"
-            "regex"
-            "scss"
-            "svelte"
-            "tsx"
-            "typescript"
-            "typst"
-            "vim"
-            "vue"
-            "yaml"
-          ];
           highlight.enable = true;
         };
 
         nixvimInjections = true;
-        grammarPackages = with pkgs.tree-sitter-grammars; [
-          tree-sitter-norg
-          tree-sitter-lua
-          tree-sitter-vim
-          tree-sitter-python
-          tree-sitter-markdown
-          tree-sitter-markdown-inline
-          tree-sitter-bash
-          tree-sitter-json
-          tree-sitter-css
-          tree-sitter-latex
-          tree-sitter-scss
-          tree-sitter-svelte
-          tree-sitter-typst
-          tree-sitter-vue
-          tree-sitter-html
-        ];
       };
 
       lualine = {

@@ -8,12 +8,14 @@
   imports = [ inputs.nixvim.homeModules.nixvim ];
 
   programs.nixvim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    withNodeJs = true;
-    withPerl = true;
+    enable = true; # <boolean>default:false
+    defaultEditor = true; # <boolean>default:false <Home-Manager Only>
+    viAlias = true; # <boolean>default:false
+    vimAlias = true; # <boolean>default:false
+    withNodeJs = true; # <boolean>default:false
+    withPerl = true; # <boolean>defualt:false
+    withPython3 = true; # <boolean>default:true
+    withRuby = true; # <boolean>default:true
 
     globals = {
       mapleader = " ";
@@ -123,29 +125,67 @@
       lua-language-server
       luaPackages.jsregexp
       mermaid-cli
-      nixd
       nixfmt
       nodejs
       prettierd
-      pyright
       python3
-      python3Packages.pynvim
       ripgrep
-      rust-analyzer
       stylua
       shellcheck
       shfmt
       sqlite
       systemd-language-server
       tree-sitter
-      typescript-language-server
-      vscode-langservers-extracted # css html json eslint
       wl-clipboard
-      yaml-language-server
     ];
 
     plugins = {
       lz-n.enable = true;
+
+      lsp = {
+        enable = true;
+        inlayHints = true;
+        servers = {
+          clangd = {
+            enable = true;
+          };
+
+          html = {
+            enable = true;
+          };
+
+          jsonls = {
+            enable = true;
+          };
+
+          marksman = {
+            enable = true;
+          };
+
+          nixd = {
+            enable = true;
+          };
+
+          pyright = {
+            enable = true;
+          };
+
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+            installRustfmt = true;
+          };
+
+          ts_ls = {
+            enable = true;
+          };
+
+          yamlls = {
+            enable = true;
+          };
+        };
+      };
 
       which-key = {
         enable = true;
@@ -316,6 +356,12 @@
           vimdoc
           xml
           yaml
+          css
+          latex
+          scss
+          svelte
+          typst
+          vue
         ];
 
         settings = {
@@ -501,6 +547,12 @@
 
       nvim-autopairs = {
         enable = true;
+      };
+
+      schemastore = {
+        enable = true;
+        json.enable = true;
+        yaml.enable = true;
       };
     };
 
@@ -921,32 +973,7 @@
       };
     };
 
-    lsp = {
-      enable = true;
-      servers = {
-        clangd = {
-          enable = true;
-          config = {
-            cmd = [
-              "clangd"
-              "--background-index"
-            ];
-            filetypes = [
-              "c"
-              "cpp"
-            ];
-            root_markers = [
-              "compile_commands.json"
-              "compile_flags.txt"
-            ];
-          };
-        };
-
-        pyright.enable = true;
-        ts_ls.enable = true;
-        jsonls.enable = true;
-      };
-    };
+    lsp = { };
 
     autoCmd = [
       {

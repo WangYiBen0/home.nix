@@ -146,7 +146,15 @@
         enable = true;
         inlayHints = true;
         servers = {
+          bashls = {
+            enable = true;
+          };
+
           clangd = {
+            enable = true;
+          };
+
+          fish_lsp = {
             enable = true;
           };
 
@@ -155,6 +163,10 @@
           };
 
           jsonls = {
+            enable = true;
+          };
+
+          lua_lsp = {
             enable = true;
           };
 
@@ -177,7 +189,23 @@
             installRustfmt = true;
           };
 
+          texlab = {
+            enable = true;
+          };
+
           ts_ls = {
+            enable = true;
+          };
+
+          tinymist = {
+            enable = true;
+          };
+
+          vimdoc = {
+            enable = true;
+          };
+
+          vimls = {
             enable = true;
           };
 
@@ -342,7 +370,6 @@
 
       treesitter = {
         enable = true;
-        package = pkgs.vimPlugins.nvim-treesitter;
         grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
           bash
           json

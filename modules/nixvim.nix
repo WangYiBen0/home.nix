@@ -347,7 +347,7 @@
       };
 
       telescope = {
-        enable = true;
+        enable = false;
         settings = {
           defaults = {
             layout_strategy = "horizontal";
@@ -439,16 +439,20 @@
           bigfile = {
             enabled = true;
           };
+
           notifier = {
             enabled = true;
             timeout = 3000;
           };
+
           quickfile = {
             enabled = false;
           };
+
           statuscolumn = {
             enabled = false;
           };
+
           words = {
             debounce = 100;
             enabled = true;
@@ -456,7 +460,6 @@
 
           dashboard = {
             enabled = true;
-            # 自定义布局
             sections = [
               {
                 section = "header";
@@ -491,7 +494,6 @@
               # { section = "startup"; }
             ];
 
-            # 自定义快捷按键
             preset = {
               keys = [
                 {
@@ -527,22 +529,32 @@
               ];
             };
           };
+
           explorer = {
             enabled = true;
           };
+
           image = {
             enabled = true;
           };
+
           input = {
-            enabled = false;
+            enabled = true;
           };
+
           picker = {
-            enabled = false;
+            enabled = true;
           };
+
           scope = {
             enabled = true;
           };
+
           scroll = {
+            enabled = true;
+          };
+
+          scratch = {
             enabled = true;
           };
         };
@@ -566,10 +578,6 @@
             javascript = [ "prettierd" ];
           };
         };
-      };
-
-      neogit = {
-        enable = true;
       };
 
       nvim-autopairs = {
@@ -804,73 +812,79 @@
       }
 
       # --- 4. 文件查找与搜索 (Find/Search) ---
-      # 基于 Telescope
+      # --- Picker (原来的 Telescope 增强版) ---
+      {
+        mode = "n";
+        key = "<leader><space>"; # 这里的快捷键非常推荐，空格+空格直接搜文件
+        action = "<cmd>lua Snacks.picker.smart()<CR>";
+        options.desc = "Smart Find Files";
+      }
       {
         mode = "n";
         key = "<leader>ff";
-        action = "<cmd>Telescope find_files<cr>";
-        options.desc = "Find Files (Root Dir)";
+        action = "<cmd>lua Snacks.picker.files()<CR>";
+        options.desc = "Find Files";
       }
       {
         mode = "n";
         key = "<leader>fr";
-        action = "<cmd>Telescope oldfiles<cr>";
-        options.desc = "Recent";
+        action = "<cmd>lua Snacks.picker.recent()<CR>";
+        options.desc = "Recent Files";
       }
       {
         mode = "n";
         key = "<leader>fb";
-        action = "<cmd>Telescope buffers<cr>";
+        action = "<cmd>lua Snacks.picker.buffers()<CR>";
         options.desc = "Buffers";
       }
       {
         mode = "n";
         key = "<leader>sg";
-        action = "<cmd>Telescope live_grep<cr>";
-        options.desc = "Grep (Root Dir)";
+        action = "<cmd>lua Snacks.picker.grep()<CR>";
+        options.desc = "Grep (Global Search)";
       }
       {
         mode = "n";
         key = "<leader>sw";
-        action = "<cmd>Telescope grep_string<cr>";
-        options.desc = "Visual selection or word (Root Dir)";
-      }
-      {
-        mode = "n";
-        key = "<leader>sc";
-        action = "<cmd>Telescope command_history<cr>";
-        options.desc = "Command History";
+        action = "<cmd>lua Snacks.picker.grep_word()<CR>";
+        options.desc = "Search Word Under Cursor";
       }
       {
         mode = "n";
         key = "<leader>sk";
-        action = "<cmd>Telescope keymaps<cr>";
-        options.desc = "Key Maps";
+        action = "<cmd>lua Snacks.picker.keymaps()<CR>";
+        options.desc = "Search Keymaps";
+      }
+      {
+        mode = "n";
+        key = "<leader>sq";
+        action = "<cmd>lua Snacks.picker.qflist()<CR>";
+        options.desc = "Quickfix List";
       }
 
       # --- 5. LSP 操作 (Code) ---
       {
         mode = "n";
         key = "gd";
-        action = "<cmd>Telescope lsp_definitions<cr>";
+        action = "<cmd>lua Snacks.picker.lsp_definitions()<cr>";
         options.desc = "Goto Definition";
       }
       {
         mode = "n";
         key = "gr";
-        action = "<cmd>Telescope lsp_references<cr>";
+        action = "<cmd>lua Snacks.picker.lsp_references()<cr>";
         options.desc = "References";
       }
       {
         mode = "n";
         key = "gI";
-        action = "<cmd>Telescope lsp_implementations<cr>";
+        action = "<cmd>lua Snacks.picker.lsp_implementations()<cr>";
         options.desc = "Goto Implementation";
       }
       {
         mode = "n";
         key = "gy";
-        action = "<cmd>Telescope lsp_type_definitions<cr>";
+        action = "<cmd>lua Snacks.picker.lsp_type_definitions()<cr>";
         options.desc = "Goto Type Definition";
       }
       {
@@ -878,6 +892,12 @@
         key = "K";
         action = "v:lua.vim.lsp.buf.hover";
         options.desc = "Hover";
+      }
+      {
+        mode = "n";
+        key = "<leader>ss";
+        action = "<cmd>lua Snacks.picker.lsp_symbols()<cr>";
+        options.desc = "LSP Symbols";
       }
       {
         mode = "n";
@@ -911,7 +931,7 @@
       }
 
       # --- 6. 工具与 UI (Tools/UI) ---
-      # 文件树 (Neo-tree)
+      # 文件树 (Snacks)
       {
         mode = "n";
         key = "<leader>e";
@@ -989,6 +1009,20 @@
         key = "<leader>xX";
         action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
         options.desc = "Buffer Diagnostics (Trouble)";
+      }
+
+      # Scratchpad (Snacks)
+      {
+        mode = "n";
+        key = "<leader>ns"; # 也可以改成你喜欢的，LazyVim 默认有时是 <leader>.
+        action = "<cmd>lua Snacks.scratch()<CR>";
+        options.desc = "Toggle Scratchpad";
+      }
+      {
+        mode = "n";
+        key = "<leader>nS";
+        action = "<cmd>lua Snacks.scratch.select()<CR>";
+        options.desc = "Select Scratchpad";
       }
     ];
 

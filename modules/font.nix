@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   home.packages = with pkgs; [
     maple-mono.NF-CN
@@ -28,4 +33,8 @@
       };
     };
   };
+
+  home.activation.rebuildFontCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.fontconfig}/bin/fc-cache --force --really-force
+  '';
 }

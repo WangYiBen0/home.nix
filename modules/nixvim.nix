@@ -1,7 +1,7 @@
-{ pkgs, NixVim, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = [
-    NixVim.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.NixVim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.sessionVariables = {

@@ -1,4 +1,3 @@
-{ _config, ... }:
 {
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -17,7 +16,6 @@
   #  /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
     SAL_USE_VCLPLUGIN = "qt6";
   };
 }

@@ -4,11 +4,13 @@
     enable = true;
     shellWrapperName = "y";
     plugins = {
-      git = pkgs.yaziPlugins.git;
-      sudo = pkgs.yaziPlugins.sudo;
-      chmod = pkgs.yaziPlugins.chmod;
-      full-border = pkgs.yaziPlugins.full-border;
-      starship = pkgs.yaziPlugins.starship;
+      inherit (pkgs.yaziPlugins)
+        git
+        sudo
+        chmod
+        full-border
+        starship
+        ;
     };
 
     initLua = ''

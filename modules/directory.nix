@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -24,7 +23,7 @@ in
     setSessionVariables = true;
   };
 
-  home.file = lib.mapAttrs (chineseName: xdgKey: {
+  home.file = lib.mapAttrs (_chineseName: xdgKey: {
     source = config.lib.file.mkOutOfStoreSymlink config.xdg.userDirs.${xdgKey};
   }) links;
 }

@@ -1,42 +1,44 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 {
-  # 安装 kitty
+  # Kitty 配置，Inspired by end-4
   programs.kitty = {
     enable = true;
-    
-    # 字体设置
+
     settings = {
+      # 字体设置
       font_family = "Maple Mono NF CN";
       font_size = 11.0;
-      
+
       # 光标
       cursor_shape = "beam";
       cursor_trail = 1;
-      
+
       # 窗口边距（与 foot 保持一致）
       window_margin_width = 21.75;
-      
+
       # 关闭确认
       confirm_os_window_close = 0;
-      
+
       # 默认 shell
       shell = "fish";
     };
-    
+
     # 键盘快捷键
     keybindings = {
       # 复制
       "ctrl+c" = "copy_or_interrupt";
-      
+
       # 搜索（使用自定义 kitten）
-      "ctrl+f" = "launch --location=hsplit --allow-remote-control kitty +kitten search.py @active-kitty-window-id";
-      "kitty_mod+f" = "launch --location=hsplit --allow-remote-control kitty +kitten search.py @active-kitty-window-id";
-      
+      "ctrl+f" =
+        "launch --location=hsplit --allow-remote-control kitty +kitten search.py @active-kitty-window-id";
+      "kitty_mod+f" =
+        "launch --location=hsplit --allow-remote-control kitty +kitten search.py @active-kitty-window-id";
+
       # 滚动
       "page_up" = "scroll_page_up";
       "page_down" = "scroll_page_down";
-      
+
       # 字体缩放
       "ctrl+plus" = "change_font_size all +1";
       "ctrl+equal" = "change_font_size all +1";
@@ -48,7 +50,7 @@
       "ctrl+kp_0" = "change_font_size all 0";
     };
   };
-  
+
   # 创建 kitten 脚本目录并放置脚本文件
   home.file = {
     # scroll_mark.py
@@ -72,7 +74,7 @@
               else:
                   w.scroll_to_mark()
     '';
-    
+
     # search.py
     ".config/kitty/search.py".text = ''
       # Kitty search from https://github.com/trygveaa/kitty-kitten-search
@@ -418,10 +420,10 @@
               loop.loop(handler)
     '';
   };
-  
+
   # 确保 kitten 脚本可执行
   home.activation = {
-    makeKittensExecutable = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    makeKittensExecutable = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       chmod +x ${config.home.homeDirectory}/.config/kitty/kittens/*.py 2>/dev/null || true
     '';
   };

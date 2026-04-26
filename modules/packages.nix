@@ -30,15 +30,20 @@
     # })
   ];
 
-  programs.btop = {
-    enable = true;
+  programs = {
+    btop = {
+      enable = true;
 
-    settings = {
-      # theme_background = false;
+      settings = {
+        # theme_background = false;
+      };
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
     };
   };
-
-  # programs.neovim = {
-  #   enable = true;
-  # };
 }

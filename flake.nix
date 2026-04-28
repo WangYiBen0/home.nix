@@ -24,15 +24,15 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
 
     NixVim = {
       url = "github:WangYiben0/nixvim.nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        nixvim.follows = "nixvim";
         flake-utils.follows = "flake-utils";
       };
     };

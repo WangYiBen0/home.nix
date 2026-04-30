@@ -10,17 +10,25 @@
       };
     };
 
-    eza = {
-      enable = true;
-      icons = "auto";
-    };
-
     bat = {
       enable = true;
       extraPackages = with pkgs.bat-extras; [
         batman
         batwatch
       ];
+    };
+
+    eza = {
+      enable = true;
+      icons = "auto";
+    };
+
+    zellij = {
+      enable = true;
+    };
+
+    zoxide = {
+      enable = true;
     };
   };
 

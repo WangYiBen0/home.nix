@@ -28,6 +28,10 @@
     #   # 注意：~ 符号在 Nix 配置中通常建议用变量或绝对路径
     #   writableDir = "/home/${config.home.username}/.local/share/Celeste";
     # })
+
+    tree
+    procs
+    httpie
   ];
 
   programs = {
@@ -39,11 +43,48 @@
       };
     };
 
+    cava = {
+      enable = true;
+    };
+
+    delta = {
+      enable = true;
+      # enableGitIntegration = true;
+    };
+
     direnv = {
       enable = true;
       nix-direnv = {
         enable = true;
       };
+    };
+
+    fd = {
+      enable = true;
+    };
+
+    fzf = {
+      enable = true;
+    };
+
+    jq = {
+      enable = true;
+    };
+
+    nh = {
+      enable = true;
+    };
+
+    ripgrep = {
+      enable = true;
+    };
+
+    ripgrep-all = {
+      enable = true;
+    };
+
+    uv = {
+      enable = true;
     };
   };
 }

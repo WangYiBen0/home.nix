@@ -5,6 +5,8 @@
   programs.kitty = {
     enable = true;
 
+    enableGitIntegration = true;
+
     settings = {
       # 字体设置
       font_family = "Maple Mono NF CN";

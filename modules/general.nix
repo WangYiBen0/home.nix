@@ -23,6 +23,11 @@
     style.name = "kvantum";
   };
 
+  home.sessionVariables = {
+    # QT_QPA_PLATFORMTHEME = "qtct";
+    QT_STYLE_OVERRIDE = "kvantum";
+  };
+
   xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
     [General]
     theme=WhiteSurDark

@@ -1,29 +1,39 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.yazi = {
     enable = true;
     shellWrapperName = "y";
-    plugins = {
-      inherit (pkgs.yaziPlugins)
-        chmod
-        diff
-        full-border
-        git
-        mount
-        sudo
-        yatline
-        yatline-catppuccin
-        yatline-githead
-        ;
-    };
+    plugins =
+      let
+        setupAll = lib.mapAttrs (
+          name: settings: {
+            package = pkgs.yaziPlugins.${name};
+            inherit settings;
+            setup = true;
+          }
+        );
+      in
+      {
+        inherit (pkgs.yaziPlugins)
+          chmod
+          diff
+          mount
+          sudo
+          yatline
+          yatline-catppuccin
+          yatline-githead
+          ;
+      }
+      // setupAll {
+        full-border = { };
+        git = {
+          order = 1500;
+        };
+      };
 
     initLua = ''
       local yatline_theme = require("yatline-catppuccin"):setup("macchiato")
 
-      require("full-border"):setup()
-      require("git"):setup {
-        order = 1500,
-      }
       require("yatline"):setup {
         theme = yatline_theme,
       }
@@ -34,7 +44,6 @@
 
     keymap = {
       mgr.prepend_keymap = [
-
         # mount.yazi
         {
           on = "M";

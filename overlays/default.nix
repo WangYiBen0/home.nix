@@ -1,3 +1,3 @@
 inputs: [
-  (import ./apple-fonts.nix inputs)
+  (import ./pkgs.nix inputs)
 ]

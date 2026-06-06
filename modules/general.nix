@@ -43,15 +43,7 @@
 
   catppuccin = {
     enable = true;
-    bat = {
-      flavor = "macchiato";
-    };
-    fcitx5 = {
-      enableRounded = true;
-    };
-    nvim = {
-      flavor = "macchiato";
-    };
+    autoEnable = true;
     gtk.icon = {
       enable = false;
     };

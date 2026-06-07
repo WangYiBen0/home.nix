@@ -44,6 +44,9 @@
   catppuccin = {
     enable = true;
     autoEnable = true;
+    fcitx5 = {
+      enableRounded = true;
+    };
     gtk.icon = {
       enable = false;
     };

@@ -30,6 +30,7 @@
     tree
     procs
     httpie
+    ironbar
   ];
 
   programs = {

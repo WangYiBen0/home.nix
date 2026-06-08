@@ -14,9 +14,6 @@
           ];
         })
         qt6Packages.fcitx5-configtool
-        # qt6Packages.fcitx5-chinese-addons
-        # fcitx5-pinyin-zhwiki
-        # fcitx5-pinyin-moegirl
         catppuccin-fcitx5
       ];
       waylandFrontend = true;

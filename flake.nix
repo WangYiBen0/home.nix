@@ -19,11 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # stylix = {
-    #   url = "github:danth/stylix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     nixvim = {
       url = "github:nix-community/nixvim";
     };
@@ -33,7 +28,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixvim.follows = "nixvim";
-        flake-utils.follows = "flake-utils";
       };
     };
 
@@ -42,77 +36,71 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
-
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      flake-utils,
-      pre-commit-hooks,
-      ...
-    }@inputs:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      in
-      {
-        formatter = pkgs.nixfmt-tree;
+    { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
 
-        checks = {
-          pre-commit-check = pre-commit-hooks.lib.${system}.run {
-            src = ./.;
-            hooks = {
-              nixfmt.enable = true;
-              deadnix.enable = true;
-              statix.enable = true;
+      imports = [
+        inputs.git-hooks-nix.flakeModule
+      ];
+
+      perSystem =
+        {
+          config,
+          pkgs,
+          ...
+        }:
+        {
+          formatter = pkgs.nixfmt-tree;
+
+          pre-commit = {
+            settings = {
+              hooks = {
+                nixfmt.enable = true;
+                deadnix.enable = true;
+                statix.enable = true;
+              };
             };
+          };
+
+          devShells.default = pkgs.mkShell {
+            inherit (config.pre-commit) shellHook;
           };
         };
 
-        devShells = {
-          default =
-            with pkgs;
-            mkShell {
-              inherit (self.checks.${system}.pre-commit-check) shellHook;
-            };
-        };
-      }
-    )
-    // {
+      flake = {
+        homeConfigurations = {
+          "w1ngd1nga5ter@nixos-matebook16d" = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = inputs.nixpkgs.legacyPackages.${import ./hosts/nixos-matebook16d/arch.nix};
+            modules = [
+              ./home.nix
+              ./hosts/nixos-matebook16d
+            ];
+            extraSpecialArgs = { inherit inputs; };
+          };
 
-      homeConfigurations = {
-        "w1ngd1nga5ter@nixos-matebook16d" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${import ./hosts/nixos-matebook16d/arch.nix};
-          modules = [
-            ./home.nix
-            ./hosts/nixos-matebook16d
-          ];
-          extraSpecialArgs = { inherit inputs; };
-        };
-
-        "w1ngd1nga5ter@nixos-sxyz-9" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${import ./hosts/nixos-sxyz-9/arch.nix};
-          modules = [
-            ./home.nix
-            ./hosts/nixos-sxyz-9
-          ];
-          extraSpecialArgs = { inherit inputs; };
+          "w1ngd1nga5ter@nixos-sxyz-9" = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = inputs.nixpkgs.legacyPackages.${import ./hosts/nixos-sxyz-9/arch.nix};
+            modules = [
+              ./home.nix
+              ./hosts/nixos-sxyz-9
+            ];
+            extraSpecialArgs = { inherit inputs; };
+          };
         };
       };
-
     };
 }

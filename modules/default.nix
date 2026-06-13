@@ -7,6 +7,7 @@ _: {
     ./identity.nix
     ./ime.nix
     ./kitty.nix
+    ./niri.nix
     ./nix.nix
     ./nix-index.nix
     ./nixvim.nix

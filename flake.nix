@@ -49,8 +49,6 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin"
       ];
 
       imports = [
@@ -83,20 +81,20 @@
 
       flake = {
         homeConfigurations = {
-          "w1ngd1nga5ter@nixos-matebook16d" = inputs.home-manager.lib.homeManagerConfiguration {
-            pkgs = inputs.nixpkgs.legacyPackages.${import ./hosts/nixos-matebook16d/arch.nix};
+          "w1ngd1nga5ter@matebook16d" = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = inputs.nixpkgs.legacyPackages.${import ./hosts/matebook16d/arch.nix};
             modules = [
               ./home.nix
-              ./hosts/nixos-matebook16d
+              ./hosts/matebook16d
             ];
             extraSpecialArgs = { inherit inputs; };
           };
 
-          "w1ngd1nga5ter@nixos-sxyz-9" = inputs.home-manager.lib.homeManagerConfiguration {
-            pkgs = inputs.nixpkgs.legacyPackages.${import ./hosts/nixos-sxyz-9/arch.nix};
+          "w1ngd1nga5ter@sxyz-9" = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = inputs.nixpkgs.legacyPackages.${import ./hosts/sxyz-9/arch.nix};
             modules = [
               ./home.nix
-              ./hosts/nixos-sxyz-9
+              ./hosts/sxyz-9
             ];
             extraSpecialArgs = { inherit inputs; };
           };

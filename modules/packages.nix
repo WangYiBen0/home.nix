@@ -31,59 +31,29 @@
     procs
     httpie
     ironbar
+    libreoffice-qt6-fresh
   ];
 
   programs = {
-    btop = {
-      enable = true;
-
-      settings = {
-        # theme_background = false;
-      };
-    };
-
-    cava = {
-      enable = true;
-    };
-
-    delta = {
-      enable = true;
-      # enableGitIntegration = true;
-    };
+    btop.enable = true;
+    cava.enable = true;
+    delta.enable = true;
 
     direnv = {
       enable = true;
-      nix-direnv = {
-        enable = true;
-      };
+      nix-direnv.enable = true;
     };
 
-    fd = {
-      enable = true;
-    };
+    fd.enable = true;
+    fzf.enable = true;
+    jq.enable = true;
+    nh.enable = true;
+    ripgrep.enable = true;
+    ripgrep-all.enable = true;
+    uv.enable = true;
+  };
 
-    fzf = {
-      enable = true;
-    };
-
-    jq = {
-      enable = true;
-    };
-
-    nh = {
-      enable = true;
-    };
-
-    ripgrep = {
-      enable = true;
-    };
-
-    ripgrep-all = {
-      enable = true;
-    };
-
-    uv = {
-      enable = true;
-    };
+  services = {
+    swaync.enable = true;
   };
 }

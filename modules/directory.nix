@@ -11,8 +11,9 @@ let
     "下载" = "download";
     "音乐" = "music";
     "图片" = "pictures";
-    "视频" = "videos";
+    "项目" = "projects";
     "模板" = "templates";
+    "视频" = "videos";
     "公共" = "publicShare";
   };
 in

@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -8,50 +9,66 @@
     inputs.catppuccin.homeModules.catppuccin
   ];
 
-  home.packages = with pkgs; [
-    libsForQt5.qtstyleplugin-kvantum
-    kdePackages.qtstyleplugin-kvantum
-    whitesur-kde
-    whitesur-icon-theme
-    whitesur-cursors
-    whitesur-gtk-theme
-  ];
+  home = {
+    pointerCursor = {
+      name = "WhiteSur-cursors";
+      package = pkgs.whitesur-cursors;
+    };
+  };
 
   qt = {
     enable = true;
     platformTheme.name = "qtct";
     style.name = "kvantum";
-  };
 
-  home.sessionVariables = {
-    # QT_QPA_PLATFORMTHEME = "qtct";
-    QT_STYLE_OVERRIDE = "kvantum";
-  };
+    kvantum = {
+      enable = true;
+      settings.General.theme = "WhiteSurDark";
+      themes = with pkgs; [
+        whitesur-kde
+        whitesur-icon-theme
+      ];
+    };
 
-  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
-    [General]
-    theme=WhiteSurDark
-  '';
+    qt5ctSettings = {
+      Appearance = {
+        icons_theme = "WhiteSur-dark";
+        style = "kvantum-dark";
+      };
+    };
+    qt6ctSettings = {
+      Appearance = {
+        icons_theme = "WhiteSur-dark";
+        style = "kvantum-dark";
+      };
+    };
+  };
 
   gtk = {
     enable = true;
+    theme = {
+      name = "WhiteSur-Dark";
+      package = pkgs.whitesur-gtk-theme;
+    };
     iconTheme = {
       name = "WhiteSur-dark";
       package = pkgs.whitesur-icon-theme;
+    };
+
+    gtk4 = {
+      theme = config.gtk.theme;
     };
   };
 
   catppuccin = {
     enable = true;
     autoEnable = true;
+
     fcitx5 = {
       enableRounded = true;
     };
-    gtk.icon = {
-      enable = false;
-    };
-    kvantum = {
-      apply = false;
-    };
+
+    gtk.icon.enable = false;
+    kvantum.enable = false;
   };
 }

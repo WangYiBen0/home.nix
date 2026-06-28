@@ -61,25 +61,33 @@
 
               <!-- 黑体 / SimHei (Sans-serif) -->
 
-              <match target="pattern">
-                  <test qual="any" name="family">
-                      <string>Microsoft YaHei</string>
-                      <string>微软雅黑</string>
-                  </test>
-                  <edit name="family" mode="assign" binding="strong">
-                      <string>Source Han Sans SC</string>
-                  </edit>
-              </match>
+              <alias>
+                <family>Microsoft YaHei</family>
+                <prefer>
+                  <family>Noto Sans CJK SC</family>
+                </prefer>
+              </alias>
 
-              <match target="pattern">
-                  <test qual="any" name="family">
-                      <string>SimHei</string>
-                      <string>黑体</string>
-                  </test>
-                  <edit name="family" mode="assign" binding="strong">
-                      <string>LXGW Neo XiHei</string>
-                  </edit>
-              </match>
+              <alias>
+                <family>微软雅黑</family>
+                <prefer>
+                  <family>Noto Sans CJK SC</family>
+                </prefer>
+              </alias>
+
+              <alias>
+                <family>SimHei</family>
+                <prefer>
+                  <family>LXGW Neo XiHei</family>
+                </prefer>
+              </alias>
+
+              <alias>
+                <family>黑体</family>
+                <prefer>
+                  <family>LXGW Neo XiHei</family>
+                </prefer>
+              </alias>
 
               <!-- 宋体 / SimSun (Serif) -->
 

@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
+  imports = [
+    inputs.zen-browser.homeModules.beta
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -51,9 +55,15 @@
     ripgrep.enable = true;
     ripgrep-all.enable = true;
     uv.enable = true;
+
+    zen-browser = {
+      enable = true;
+      setAsDefaultBrowser = true;
+    };
   };
 
   services = {
     swaync.enable = true;
+    polkit-gnome.enable = true;
   };
 }

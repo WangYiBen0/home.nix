@@ -2,10 +2,24 @@
   description = "W1ngD1nGa5ter's Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Flake Developing
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Extra Modules
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -14,8 +28,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    apple-fonts = {
-      url = "github:Lyndeno/apple-fonts.nix";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,24 +38,20 @@
     };
 
     NixVim = {
-      url = "github:WangYiben0/nixvim.nix";
+      url = "github:WangYiBen0/nixvim.nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixvim.follows = "nixvim";
       };
     };
 
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake/beta";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
-
-    git-hooks-nix = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =

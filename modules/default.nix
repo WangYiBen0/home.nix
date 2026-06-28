@@ -3,7 +3,6 @@ _: {
     ./directory.nix
     ./file.nix
     ./font.nix
-    ./general.nix
     ./identity.nix
     ./ime.nix
     ./kitty.nix
@@ -14,6 +13,7 @@ _: {
     ./packages.nix
     ./shell.nix
     ./starship.nix
+    ./theme.nix
     ./variable.nix
     ./yazi.nix
   ];

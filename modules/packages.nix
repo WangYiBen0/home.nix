@@ -31,7 +31,6 @@
     #   writableDir = "/home/${config.home.username}/.local/share/Celeste";
     # })
 
-    tree
     procs
     httpie
     ironbar

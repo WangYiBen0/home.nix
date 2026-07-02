@@ -1,8 +1,5 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [
-    inputs.zen-browser.homeModules.beta
-  ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

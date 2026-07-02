@@ -1,5 +1,9 @@
-_: {
+{ inputs, ... }: {
   imports = [
+    inputs.catppuccin.homeModules.catppuccin
+    inputs.nix-index-database.homeModules.nix-index
+    inputs.zen-browser.homeModules.beta
+
     ./directory.nix
     ./file.nix
     ./font.nix

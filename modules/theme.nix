@@ -1,14 +1,5 @@
+{ config, pkgs, ... }:
 {
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
-{
-  imports = [
-    inputs.catppuccin.homeModules.catppuccin
-  ];
-
   home = {
     pointerCursor = {
       name = "WhiteSur-cursors";

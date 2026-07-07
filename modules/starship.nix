@@ -9,7 +9,7 @@
 
         # 主格式布局
         format = ''
-          $cmd_duration 󰜥 $directory $git_branch
+          $shlvl $cmd_duration 󰜥 $directory $git_branch $nix_shell
           $character'';
 
         character = {
@@ -24,7 +24,7 @@
           symbol = "󰘬";
           truncation_length = 12;
           truncation_symbol = "";
-          format = "󰜥 [](bold fg:cyan)[$symbol $branch(:$remote_branch)](fg:black bg:cyan)[ ](bold fg:cyan)";
+          format = "󰜥 [](bold fg:cyan)[$symbol $branch(:$remote_branch)](fg:black bg:cyan)[](bold fg:cyan)";
         };
 
         git_commit = {
@@ -84,7 +84,7 @@
           home_symbol = "  ";
           read_only = "  ";
           style = "bg:green fg:black";
-          truncation_length = 6;
+          truncation_length = 8;
           truncation_symbol = " ••/";
           format = "[](bold fg:green)[󰉋 $path]($style)[](bold fg:green)";
           substitutions = {
@@ -95,12 +95,26 @@
             "Pictures" = "  ";
             "Videos" = "  ";
             "GitHub" = " 󰊤 ";
+            "Projects" = "  ";
           };
         };
 
         cmd_duration = {
           min_time = 0;
           format = "[](bold fg:yellow)[󰪢 $duration](bold bg:yellow fg:black)[](bold fg:yellow)";
+        };
+
+        nix_shell = {
+          disabled = false;
+          symbol = "󱄅 ";
+          format = "󰜥 [](bold fg:peach)[$symbol$state](bold bg:peach fg:black)[](bold fg:peach)";
+        };
+
+        shlvl = {
+          disabled = false;
+          symbol = " ";
+          repeat = false;
+          format = "[](bold fg:mauve)[$symbol$shlvl](bold bg:mauve fg:black)[](bold fg:mauve)";
         };
       };
     };

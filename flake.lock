@@ -1,30 +1,5 @@
 {
   "nodes": {
-    "NixVim": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "git-hooks-nix": "git-hooks-nix",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixvim": [
-          "nixvim"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783264030,
-        "narHash": "sha256-Jd4rRrm5f3Cop1F5nH+soiRB8rPC47eY5BnZYFWT8X4=",
-        "owner": "WangYiBen0",
-        "repo": "nixvim.nix",
-        "rev": "b28b6542ef06222c1a1f4c3fc70503692c2a5ff7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "WangYiBen0",
-        "repo": "nixvim.nix",
-        "type": "github"
-      }
-    },
     "apple-fonts": {
       "inputs": {
         "ci": "ci",
@@ -87,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783412608,
-        "narHash": "sha256-L+XNOGLSeqlW0Z5/PGcKAujY8XeeZY8fVPVFx+wJFXo=",
+        "lastModified": 1783449009,
+        "narHash": "sha256-BJYTl6uZ0PRzOjjxaPHnfEifkTwf63uXwWfjrplRoL0=",
         "owner": "catppuccin",
         "repo": "nix",
-        "rev": "f5563bfd49ed29d56c3a3e09989031b2eab7299d",
+        "rev": "da2bb1bb2ed82749c56b34f940e0af9339d72533",
         "type": "github"
       },
       "original": {
@@ -194,6 +169,7 @@
       "inputs": {
         "nixpkgs-lib": [
           "nixvim",
+          "nixvim",
           "nixpkgs"
         ]
       },
@@ -215,7 +191,6 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "nixpkgs": [
-          "NixVim",
           "nixpkgs"
         ]
       },
@@ -237,6 +212,7 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "nixpkgs": [
+          "nixvim",
           "nixpkgs"
         ]
       },
@@ -261,11 +237,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783388784,
-        "narHash": "sha256-w+YU5vatysjLZIg1wOKSzo/RL9Z66eBQuIjVnBM/1Zg=",
+        "lastModified": 1783479733,
+        "narHash": "sha256-d/JatqgG+Pmo+IuCTZfnrEAPWU3fdha48GQeXuFO+bE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "63d02d1c19f1c2b47a5bc7e55c620b6af7b218a6",
+        "rev": "cee3f0e7fec85d80c149c7afc29926747f7bd3c2",
         "type": "github"
       },
       "original": {
@@ -342,6 +318,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1783224372,
+        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1783279667,
         "narHash": "sha256-/NAkDSsve+GNM0Bt6tleJdCGfsTlK89nPjkVOzZMo0s=",
         "owner": "NixOS",
@@ -358,8 +350,29 @@
     },
     "nixvim": {
       "inputs": {
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_2",
+        "git-hooks-nix": "git-hooks-nix_2",
         "nixpkgs": "nixpkgs_2",
+        "nixvim": "nixvim_2"
+      },
+      "locked": {
+        "lastModified": 1783486772,
+        "narHash": "sha256-Zs2Apa8s23VDaM2oZCCKwgwZoi/86GNrHGLFVjLTUkc=",
+        "owner": "WangYiBen0",
+        "repo": "nixvim.nix",
+        "rev": "ff52bfd9c9b6f04ce9d579f9dcd3800fcf7eee6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "WangYiBen0",
+        "repo": "nixvim.nix",
+        "type": "github"
+      }
+    },
+    "nixvim_2": {
+      "inputs": {
+        "flake-parts": "flake-parts_3",
+        "nixpkgs": "nixpkgs_3",
         "systems": "systems"
       },
       "locked": {
@@ -390,11 +403,10 @@
     },
     "root": {
       "inputs": {
-        "NixVim": "NixVim",
         "apple-fonts": "apple-fonts",
         "catppuccin": "catppuccin",
-        "flake-parts": "flake-parts_2",
-        "git-hooks-nix": "git-hooks-nix_2",
+        "flake-parts": "flake-parts",
+        "git-hooks-nix": "git-hooks-nix",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",

@@ -34,15 +34,7 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim";
-    };
-
-    NixVim = {
       url = "github:WangYiBen0/nixvim.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixvim.follows = "nixvim";
-      };
     };
 
     zen-browser = {

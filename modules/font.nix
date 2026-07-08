@@ -56,100 +56,95 @@
 
             <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
             <fontconfig>
-            <description>Add alias to some common Chinese fonts from Windows</description>
-              <!-- Aliases -->
+            <description>Substitute common Windows Chinese font names (and their GB2312/GBK/ExtB variants) with open-source equivalents</description>
 
-              <!-- 黑体 / SimHei (Sans-serif) -->
+              <!--
+                用 compare="contains" 做子串匹配，
+                一条规则即可覆盖 宋体_GB2312 / SimSun-ExtB 之类的变体，
+                避免逐个枚举。match 在 alias 之前解析，
+                binding="strong" 保证优先级高于文档内嵌字体请求。
+              -->
 
-              <alias>
-                <family>Microsoft YaHei</family>
-                <prefer>
-                  <family>Noto Sans CJK SC</family>
-                </prefer>
-              </alias>
+              <!-- 黑体 / SimHei / Microsoft YaHei 系列 (Sans-serif) -->
+              <match target="pattern">
+                <test name="family" compare="contains"><string>雅黑</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>Noto Sans CJK SC</string>
+                </edit>
+              </match>
 
-              <alias>
-                <family>微软雅黑</family>
-                <prefer>
-                  <family>Noto Sans CJK SC</family>
-                </prefer>
-              </alias>
+              <match target="pattern">
+                <test name="family" compare="contains"><string>YaHei</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>Noto Sans CJK SC</string>
+                </edit>
+              </match>
 
-              <alias>
-                <family>SimHei</family>
-                <prefer>
-                  <family>LXGW Neo XiHei</family>
-                </prefer>
-              </alias>
+              <match target="pattern">
+                <test name="family" compare="contains"><string>黑体</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>LXGW Neo XiHei</string>
+                </edit>
+              </match>
 
-              <alias>
-                <family>黑体</family>
-                <prefer>
-                  <family>LXGW Neo XiHei</family>
-                </prefer>
-              </alias>
+              <match target="pattern">
+                <test name="family" compare="contains"><string>SimHei</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>LXGW Neo XiHei</string>
+                </edit>
+              </match>
 
               <!-- 宋体 / SimSun (Serif) -->
+              <match target="pattern">
+                <test name="family" compare="contains"><string>宋体</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>LXGW Neo ZhiSong</string>
+                </edit>
+              </match>
 
-              <alias>
-                <family>SimSun</family>
-                <prefer>
-                  <family>LXGW Neo ZhiSong</family>
-                </prefer>
-              </alias>
+              <match target="pattern">
+                <test name="family" compare="contains"><string>SimSun</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>LXGW Neo ZhiSong</string>
+                </edit>
+              </match>
 
-              <alias>
-                <family>宋体</family>
-                <prefer>
-                  <family>LXGW Neo ZhiSong</family>
-                </prefer>
-              </alias>
+              <match target="pattern">
+                <test name="family" compare="contains"><string>NSimSun</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>LXGW Neo ZhiSong</string>
+                </edit>
+              </match>
 
               <!-- 楷体 / KaiTi -->
+              <match target="pattern">
+                <test name="family" compare="contains"><string>楷体</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>LXGW ZhenKai GB</string>
+                </edit>
+              </match>
 
-              <alias>
-                <family>KaiTi</family>
-                <prefer>
-                  <family>LXGW ZhenKai GB</family>
-                </prefer>
-              </alias>
-
-              <alias>
-                <family>楷体</family>
-                <prefer>
-                  <family>LXGW ZhenKai GB</family>
-                </prefer>
-              </alias>
-
-              <alias>
-                <family>KaiTi_GB2312</family>
-                <prefer>
-                  <family>LXGW ZhenKai GB</family>
-                </prefer>
-              </alias>
-
-              <alias>
-                <family>楷体_GB2312</family>
-                <prefer>
-                  <family>LXGW ZhenKai GB</family>
-                </prefer>
-              </alias>
+              <match target="pattern">
+                <test name="family" compare="contains"><string>KaiTi</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>LXGW ZhenKai GB</string>
+                </edit>
+              </match>
 
               <!-- 仿宋 / FangSong -->
+              <match target="pattern">
+                <test name="family" compare="contains"><string>仿宋</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>Zhuque FangSong (technical preview)</string>
+                </edit>
+              </match>
 
-              <alias>
-                <family>FangSong</family>
-                <prefer>
-                  <family>Zhuque FangSong (technical preview)</family>
-                </prefer>
-              </alias>
-
-              <alias>
-                <family>仿宋</family>
-                <prefer>
-                  <family>Zhuque FangSong (technical preview)</family>
-                </prefer>
-              </alias>
+              <match target="pattern">
+                <test name="family" compare="contains"><string>FangSong</string></test>
+                <edit name="family" mode="prepend" binding="strong">
+                  <string>Zhuque FangSong (technical preview)</string>
+                </edit>
+              </match>
 
             </fontconfig>
           '';

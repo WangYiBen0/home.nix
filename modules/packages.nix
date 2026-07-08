@@ -28,6 +28,7 @@
     #   writableDir = "/home/${config.home.username}/.local/share/Celeste";
     # })
 
+    anyrun
     procs
     httpie
     ironbar

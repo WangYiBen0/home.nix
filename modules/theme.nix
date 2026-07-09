@@ -2,6 +2,7 @@
 {
   home = {
     pointerCursor = {
+      enable = true;
       name = "WhiteSur-cursors";
       package = pkgs.whitesur-cursors;
     };
@@ -59,6 +60,7 @@
       enableRounded = true;
     };
 
+    cursors.enable = false;
     gtk.icon.enable = false;
     kvantum.enable = false;
   };

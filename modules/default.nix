@@ -12,6 +12,7 @@
     ./identity.nix
     ./ime.nix
     ./kitty.nix
+    ./launcher.nix
     ./niri.nix
     ./nix.nix
     ./nix-index.nix

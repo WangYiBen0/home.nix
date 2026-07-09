@@ -28,11 +28,11 @@
     #   writableDir = "/home/${config.home.username}/.local/share/Celeste";
     # })
 
-    anyrun
     procs
     httpie
     ironbar
     libreoffice-qt6-fresh
+    nemo-with-extensions
   ];
 
   programs = {

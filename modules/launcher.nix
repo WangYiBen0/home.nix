@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   programs.anyrun = {
     enable = true;
     config = {
@@ -43,10 +43,10 @@
       # The order of plugins here specifies the order in which they appear
       # in the results. As in it works as a priority for the plugins.
       plugins = [
-        "libapplications.so"
-        "libsymbols.so"
-        "libshell.so"
-        "libtranslate.so"
+        "${pkgs.anyrun}/lib/libapplications.so"
+        "${pkgs.anyrun}/lib/libsymbols.so"
+        "${pkgs.anyrun}/lib/libshell.so"
+        "${pkgs.anyrun}/lib/libtranslate.so"
       ];
 
       # waiting for https://github.com/nix-community/home-manager/issues/8590

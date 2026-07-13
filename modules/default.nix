@@ -9,7 +9,7 @@
     ./editor.nix
     ./file.nix
     ./font.nix
-    ./identity.nix
+    ./git.nix
     ./ime.nix
     ./kitty.nix
     ./launcher.nix

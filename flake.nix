@@ -79,6 +79,10 @@
           devShells.default = pkgs.mkShell {
             inherit (config.pre-commit) shellHook;
           };
+
+          packages = import ./pkgs {
+            inherit (pkgs) callPackage;
+          };
         };
 
       flake = {

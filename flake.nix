@@ -80,6 +80,10 @@
             inherit (config.pre-commit) shellHook;
           };
 
+          # packages = lib.filesystem.packagesFromDirectoryRecursive {
+          #   inherit (pkgs) callPackage;
+          #   directory = ./pkgs;
+          # };
           packages = import ./pkgs {
             inherit (pkgs) callPackage;
           };

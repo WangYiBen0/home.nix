@@ -4,12 +4,12 @@
   stdenvNoCC,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "zhuque-fangsong";
   version = "0.212";
 
   src = fetchzip {
-    url = "https://github.com/TrionesType/zhuque/releases/download/v${version}/ZhuqueFangsong-v${version}.zip";
+    url = "https://github.com/TrionesType/zhuque/releases/download/v${finalAttrs.version}/ZhuqueFangsong-v${finalAttrs.version}.zip";
     hash = "sha256-see78H4ClZON4pujyUxvCjphFrKG73qBVEyhRoSxZ0Y=";
     stripRoot = false;
   };
@@ -28,4 +28,4 @@ stdenvNoCC.mkDerivation rec {
     license = lib.licenses.ofl;
     platforms = lib.platforms.all;
   };
-}
+})

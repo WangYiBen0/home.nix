@@ -5,21 +5,24 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    maple-mono.NF-CN
-    noto-fonts-cjk-sans
-    source-han-serif
-    smiley-sans
-    lxgw-wenkai
-    lxgw-wenkai-screen
-    lxgw-neoxihei
-    lxgw-neozhisong
-    lxgw-zhenkai
-    zhuque-fangsong
-    inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
-    inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono
-    inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.ny
-  ];
+  home.packages =
+    (with pkgs; [
+      maple-mono.NF-CN
+      noto-fonts-cjk-sans
+      source-han-serif
+      smiley-sans
+      lxgw-wenkai
+      lxgw-wenkai-screen
+      lxgw-neoxihei
+      lxgw-neozhisong
+      lxgw-zhenkai
+      zhuque-fangsong
+    ])
+    ++ (with inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}; [
+      sf-pro
+      sf-mono
+      ny
+    ]);
 
   fonts = {
     fontconfig = {

@@ -4,12 +4,12 @@
   stdenvNoCC,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "lxgw-neozhisong";
   version = "1.066";
 
   src = fetchurl {
-    url = "https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v${version}/LXGWNeoZhiSong.ttf";
+    url = "https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v${finalAttrs.version}/LXGWNeoZhiSong.ttf";
     hash = "sha256-lZNqCG/3rY6LMCiN7A4g6BeXb6EnXY8RqFseYUTI0Bc=";
   };
 
@@ -29,4 +29,4 @@ stdenvNoCC.mkDerivation rec {
     license = lib.licenses.ipa;
     platforms = lib.platforms.all;
   };
-}
+})

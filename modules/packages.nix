@@ -27,6 +27,7 @@
     #   writableDir = "/home/${config.home.username}/.local/share/Celeste";
     # })
 
+    bluetui
     procs
     httpie
     ironbar
